@@ -1,4 +1,6 @@
-/* Base reset */
+/* -------------------- 
+      BASE RESET 
+-------------------- */
 
 * {
     margin: 0 auto; 
@@ -18,7 +20,9 @@
     overflow: hidden;
   }
   
-  /* Navigation */
+/* -------------------- 
+       NAVIGATION 
+-------------------- */
   .site-header {
     display: flex;
     background-color: #022845;
@@ -73,7 +77,9 @@
     color: white;
   }
   
-  /* NAVIGATION SMALLER SCREENS */
+/* -------------------- 
+    RESPONSIVE NAV 
+-------------------- */
   @media screen and (max-width: 1000px) {
     .site-header {
       // align-items: flex-start;
@@ -113,9 +119,10 @@
     } 
   }
   
-  /* MAIN CONTENT STYLE */
+/* -------------------- 
+      MAIN CONTENT 
+-------------------- */
   main {
-    top: 8rem;
     height: 100vh;
     min-height: 200px;
   }
@@ -126,7 +133,6 @@
     flex-direction: column;
     justify-content: center;
     gap: 20px;
-    // position: relative;
   }
   
   .container > h2 {
