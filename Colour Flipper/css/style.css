@@ -81,16 +81,11 @@
     RESPONSIVE NAV 
 -------------------- */
   @media screen and (max-width: 1000px) {
-    .site-header {
-      // align-items: flex-start;
-      // padding: 0rem 0rem 0rem 6rem;
-    }
     
     #title {
     font-size: 2rem;
     font-weight: 600;
     flex: 1;
-    // padding: 2rem 0rem 1rem 0rem;
   }
     
     .nav-menu {
@@ -133,19 +128,19 @@
     flex-direction: column;
     justify-content: center;
     gap: 20px;
+    padding: 0rem 3rem;
   }
   
   .container > h2 {
     font-size: 6rem;
     text-align: center;
   }
-  
+
   #btn-group {
     display: flex;
     column-gap: 20px;
   }
-  
-  
+    
   @media screen and (max-width: 1200px) {
     .container > h2 {
     font-size: 4rem;
@@ -161,6 +156,7 @@
   #main-text {
     font-size: 2rem;
     font-weight: 400;
+    text-align: center;
   }
   
   .btn {
