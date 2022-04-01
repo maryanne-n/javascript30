@@ -5,6 +5,8 @@ let guesses = document.querySelector(".guesses");
 let result = document.querySelector(".result");
 let hint = document.querySelector(".hint");
 let restartButton = document.querySelector(".restart");
+const submitButton = document.querySelector(".submitButton");
+
 function checkGuess() {
     let userGuess = Number(document.querySelector("#guessBox").value);    
     console.log(guessCount);
@@ -18,10 +20,12 @@ function checkGuess() {
     if (userGuess === randomNum){
         result.textContent = "Woohoo! You won! Here is your internet prize <3";
         hint.textContent = "No need for hints, since you're awesome and got this!"
-        restartGame();
-        restartButton.style.visibility = "visible";
+        gameOver();        
     } else if (guessCount === 10) {
-        result.textContent = "Game Over :("          
+        result.textContent = "Game Over :( Try again?";
+        hint.textContent = "";
+        console.log("TOo many guesses");
+        gameOver();   
     } else {
         result.textContent - "Wrong!"
         if (userGuess > randomNum) {
@@ -33,8 +37,17 @@ function checkGuess() {
     guessCount++;
 }
 
+function gameOver() {
+    restartButton.style.visibility = "visible";
+    guessBox.disabled = true;
+    submitButton.disabled = true;
+    restartButton.style.visibility = "visible";   
+}
+
 function restartGame() {
     restartButton.style.visibility = "hidden";
+    guessBox.disabled = false;
+    submitButton.disabled = false;
     result.textContent = "";
     hint.textContent = "";
     result.textContent = "";
