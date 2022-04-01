@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">    
+    <title>Number Guesser</title>
+</head>
+<body>
+    <h1>Number Guessing Game</h1>
+    <p>Can you guess the randomly generated number in under 10 tries?</p>
+    <form>
+        <label for="guessBox">Guess:</label>
+        <input type="text" id="guessBox" class="guessBox" name="user-guess">
+        <input type="submit" value="Submit Guess" onclick="checkGuess()">
+    </form>
+    <p class="guesses"></p>
+    <p class="result"></p>
+    <p class="hint"></p>
+    <button class="restart" onclick="restartGame()">Restart Game</button>
+    <script src="script.js"></script>
+</body>
+</html>
