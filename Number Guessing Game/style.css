@@ -9,55 +9,82 @@
     --wine: #542938;
     --light-wine: #8e6070;
     --midnight-purple: #2B1F2D;  
-    }
+}
     
-  html {
-      font-size: 16px;
-      box-sizing: border-box;
-  }
-  
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-  
-  body, h1, h2, h3, h4, h5, h6, p, ol, ul {
-    margin: 0;
-    padding: 0;
-    font-weight: normal;
-  }
-  
-  h3 {
-    font-weight: 700;
-    font-size: 18px;
-  }
-  
-  h4 {
-    font-weight: 700;
+html {
     font-size: 16px;
-  }
-  
-  button, p {
-    font-size: 16px;
-  }
-  
-  ol, ul {
-    list-style: none;
-  }
-  
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  body {
-    font-family: 'Open Sans';
-    margin: 0 auto;
-  }
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul, form {
+  margin: 0 auto;
+  padding: 0;
+  font-weight: normal;
+}
+
+p {
+  font-size: 16px;
+  text-align: center;
+  padding: 20px 0px 20px;
+  height: 40px;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: 'Open Sans';
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 /* =================================================== */
 /* Main styles ======================================= */
 /* =================================================== */
 
-button.restart {
-    visibility: hidden;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 100px;
 }
+
+form {
+  padding: 40px 0px 40px;
+  /* height: 120px; */
+}
+
+.submitButton {
+  width: 150px;
+  height: 40px;
+  border-radius: 4px;
+  border: none;
+  background: fuchsia;
+  cursor: pointer;;
+}
+
+.restartButton {
+  width: 150px;
+  height: 40px;
+  visibility: hidden;
+  margin-top: 40px;
+  align-self: center;
+}
+
+h1 {
+  text-align: center;
+  /* height: 80px; */
+}
+
