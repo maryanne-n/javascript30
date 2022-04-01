@@ -15,7 +15,7 @@ function checkGuess() {
         event.preventDefault();
         guesses.textContent + " ";
         hint.textContent = "Please enter a number from 1-100 inclusive."
-    } else if (userGuess <= 0 || userGuess >=100) {
+    } else if (userGuess < 1 || userGuess > 100) {
         console.log("Number too small/big");
         event.preventDefault();
         guesses.textContent + " ";
@@ -70,5 +70,3 @@ function restartGame() {
     guessCount = 1;
     randomNum = Math.floor(Math.random() * 99 + 1);
 }
-
-
