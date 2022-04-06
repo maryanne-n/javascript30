@@ -1,16 +1,7 @@
-/* =================================================== */
-/* Base reset & style ================================ */
-/* =================================================== */
+/* =============================================== */
+/* Base reset & style ============================ */
+/* =============================================== */
 
-:root {
-    --off-white: #F5F4F4;
-    --light-gray: #8A93A5;
-    --main-rose: #CE525C;
-    --wine: #542938;
-    --light-wine: #8e6070;
-    --midnight-purple: #2B1F2D;  
-}
-    
 html {
     font-size: 16px;
     box-sizing: border-box;
@@ -29,7 +20,7 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul, form {
 p {
   font-size: 16px;
   text-align: center;
-  padding: 20px 0px 20px;
+  padding: 10px 0px 10px;
   height: 40px;
 }
 
@@ -45,25 +36,24 @@ img {
 body {
   font-family: 'Open Sans';
   margin: 0 auto;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
 
-/* =================================================== */
-/* Main styles ======================================= */
-/* =================================================== */
+/* =============================================== */
+/* Main styles =================================== */
+/* =============================================== */
 
 .wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 100px;
 }
 
 form {
   padding: 40px 0px 40px;
-  /* height: 120px; */
 }
 
 .submitButton {
@@ -71,8 +61,12 @@ form {
   height: 40px;
   border-radius: 4px;
   border: none;
-  background: fuchsia;
+  background: powderblue;
   cursor: pointer;;
+}
+
+.submitButton:hover {
+  background: skyblue;
 }
 
 .restartButton {
@@ -81,10 +75,20 @@ form {
   visibility: hidden;
   margin-top: 40px;
   align-self: center;
+  cursor: pointer;
+  border: 1px solid red;
+  background-color: white;
+  border-radius: 4px;
+  color: red;
+}
+
+.restartButton:hover {
+  background-color: red;
+  border-radius: 4px;
+  color: white;
 }
 
 h1 {
   text-align: center;
-  /* height: 80px; */
 }
 

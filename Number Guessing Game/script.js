@@ -7,6 +7,8 @@ let hint = document.querySelector(".hint");
 let restartButton = document.querySelector(".restartButton");
 const submitButton = document.querySelector(".submitButton");
 
+guessBox.focus();
+
 function checkGuess() {
 
     let userGuess = Number(document.querySelector("#guessBox").value);    
@@ -98,4 +100,5 @@ function restartGame() {
     // Generate new random number 
     randomNum = Math.floor(Math.random() * 99 + 1);
 
+    guessBox.focus();
 }
