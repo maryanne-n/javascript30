@@ -17,7 +17,8 @@ function checkGuess() {
     if (isNaN(userGuess)) {
         console.log("Not a number");
         event.preventDefault();
-        guesses.textContent + " ";
+        hint.style.visibility = "visible";
+        guesses.textContent + " ";        
         hint.textContent = "Please enter a number from 1-100 inclusive."
     
         // If user guess an ineligible number 
@@ -25,6 +26,7 @@ function checkGuess() {
         console.log("Number too small/big");
         event.preventDefault();
         guesses.textContent + " ";
+        hint.style.visibility = "visible";
         hint.textContent = "Please enter a number from 1-100 inclusive."
 
     } else {
@@ -40,22 +42,26 @@ function checkGuess() {
 
         // If user guesses the number
         if (userGuess === randomNum){
-            result.textContent = "Woohoo! You won! Here is your internet prize <3";
-            hint.textContent = ""
-            guesses.textContent = "Number of guesses you took: " + guessCount;
+            // result.textContent = "Woohoo! You won! Here is your internet prize <3";
+            hint.textContent = "Woohoo! You won! Here is your internet prize <3";
+            hint.classList.remove("wrong", "visible");
+            hint.classList.add("correct", "visible");
+            // guesses.textContent = "Number of guesses you took: " + guessCount;
             gameOver();   
             
         // If user takes more than 10 tries to guess  
         } else if (guessCount === 10) {
-            result.textContent = "Game Over :( Try again?";
-            hint.textContent = "";
+            hint.textContent = "Game Over :( Try again?";
+            // hint.textContent = "";
             console.log("TOo many guesses");
             gameOver(); 
 
         // If user guesses wrong but has had less than 10 tries
         } else {
-            result.textContent - "Wrong!"            
-            if (userGuess > randomNum) {
+            // result.textContent - "Wrong!"  
+            hint.classList.remove("wrong", "visible");
+            hint.className += " wrong visible";          
+            if (userGuess > randomNum) {                
                 hint.textContent = "Try a lower number.";
             } else if (userGuess < randomNum) {
                 hint.textContent = "Try a higher number.";
@@ -73,6 +79,10 @@ function gameOver() {
 
     // Show Restart button 
     restartButton.style.visibility = "visible";
+    
+    // Hide hints
+    hint.style.visibility = "hidden";
+    // hint.classList.remove("wrong","correct");
 
     // Disable fields
     guessBox.disabled = true;
@@ -86,8 +96,10 @@ function restartGame() {
     // Hide Restart button 
     restartButton.style.visibility = "hidden";
 
+    
+
     // Re-enable guess fields and submit button
-    guessBox.disabled = false;
+    guessBox.disabled = false;  
     submitButton.disabled = false;
     submitButton.style.cursor = "pointer";
 

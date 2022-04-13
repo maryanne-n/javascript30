@@ -5,23 +5,30 @@
 html {
     font-size: 16px;
     box-sizing: border-box;
+    height: -webkit-fill-available;
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
-body, h1, h2, h3, h4, h5, h6, p, ol, ul, form {
+h1, h2, h3, h4, h5, h6, p, ol, ul, form {
   margin: 0 auto;
   padding: 0;
   font-weight: normal;
 }
 
+@font-face {
+  font-family: VCR;
+  src: url(fonts/VCR_OSD_MONO_1.001.ttf);
+}
+
 p {
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
   padding: 10px 0px 10px;
   height: 40px;
+  margin: 10px;
 }
 
 ol, ul {
@@ -33,27 +40,118 @@ img {
   height: auto;
 }
 
-body {
-  font-family: 'Open Sans';
-  margin: 0 auto;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-}
 
 /* =============================================== */
 /* Main styles =================================== */
 /* =============================================== */
 
-.wrapper {
+body::before {
+  content: "";
+  background-image: url(images/background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: fixed;  
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  z-index: -1;
+}
+
+body {
+  font-family: 'Open Sans';
+  margin: 0 auto;
+  /* height: 100%; */
+  height: 100vh;
+  min-height: 100vh;
+  /* min-height: -webkit-fill-available; */
+  /* width: 100vw; */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 100px;
+  
+}
+
+/* .bg {
+  width: 100%;
+  height: 100%;
+  background-image: url(images/background.jpg);
+  object-fit: cover;
+  background-repeat: no-repeat;
+} */
+
+h1 {
+  font-family: VCR, 'Open Sans';
+  font-size: 60px; 
+  text-shadow: 4px 4px 6px black; 
+}
+
+.header {
+  padding: 50px 100px 50px;
+  /* background-color: rgba(0,0,0,0.3); */
+  color: white;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;  
+  justify-content: center;
+  align-items: center;
+  /* padding: 100px 0px 100px; */
+  height: 100%;
+}
+
+.gameBoard {
+  width: 600px;
+  background-color: rgba(0,0,0,0.4);
+  color: white;
+  text-align: center;
+}
+
+#guessBox {
+  width: 300px;
+  height: 30px;
+  text-align: center;
+}
+
+.hint {
+  /* background-color: rgb(255, 217, 209); */
+  display: inline-block;
+  /* padding: 5px 20px 5px;
+  border: 1px solid red;;
+  color: red;
+  text-align: center;
+  visibility: hidden; */
+}
+
+.wrong {
+  background-color: rgb(255, 217, 209);
+  display: inline-block;
+  padding: 5px 20px 5px;
+  border: 1px solid red;;
+  color: red;
+  text-align: center;
+  visibility: hidden;
+}
+
+.correct {
+  background-color: rgb(204, 255, 204);
+  display: inline-block;
+  padding: 5px 20px 5px;
+  border: 1px solid green;;
+  color: green;
+  text-align: center;
+  visibility: hidden;
 }
 
 form {
   padding: 40px 0px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
 }
 
 .submitButton {
@@ -71,15 +169,18 @@ form {
 
 .restartButton {
   width: 150px;
-  height: 40px;
-  visibility: hidden;
-  margin-top: 40px;
+  padding: 12px 40px 12px;
   align-self: center;
   cursor: pointer;
   border: 1px solid red;
   background-color: white;
   border-radius: 4px;
   color: red;
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible !important;
 }
 
 .restartButton:hover {
