@@ -1,6 +1,7 @@
 let randomNum = Math.floor(Math.random() * 100 + 1);
 const guessBox = document.querySelector("#guessBox");
 let guessCount = 1;
+let turns = document.querySelector(".turns");
 let guesses = document.querySelector(".guesses");
 let result = document.querySelector(".result");
 let hint = document.querySelector(".hint");
@@ -11,56 +12,49 @@ guessBox.focus();
 
 function checkGuess() {
 
-    let userGuess = Number(document.querySelector("#guessBox").value);    
+    let userGuess = Number(document.querySelector("#guessBox").value);
+    hint.style.display = "block";
+    
 
     // If user guesses a non-number
     if (isNaN(userGuess)) {
-        console.log("Not a number");
         event.preventDefault();
-        hint.style.visibility = "visible";
-        guesses.textContent + " ";        
+        hint.classList.add("wrong");       
         hint.textContent = "Please enter a number from 1-100 inclusive."
     
-        // If user guess an ineligible number 
+    // If user guess an ineligible number 
     } else if (userGuess < 1 || userGuess > 100) {
-        console.log("Number too small/big");
         event.preventDefault();
-        guesses.textContent + " ";
-        hint.style.visibility = "visible";
+        hint.classList.add("wrong");
         hint.textContent = "Please enter a number from 1-100 inclusive."
 
     } else {
         // If user guesses an eligible number
-        console.log(guessCount);
         event.preventDefault();
 
         if (guessCount === 1) {
             guesses.textContent = "Previous Guesses: ";
         }
-
-        guesses.textContent += userGuess + " ";
-
+        
+        // Turn on previous guesses div 
+        guesses.style.display = "block";
+        guesses.textContent += userGuess + " ";        
+        
         // If user guesses the number
         if (userGuess === randomNum){
-            // result.textContent = "Woohoo! You won! Here is your internet prize <3";
             hint.textContent = "Woohoo! You won! Here is your internet prize <3";
-            hint.classList.remove("wrong", "visible");
-            hint.classList.add("correct", "visible");
-            // guesses.textContent = "Number of guesses you took: " + guessCount;
+            hint.classList.remove("wrong");
+            hint.classList.add("correct");
             gameOver();   
             
         // If user takes more than 10 tries to guess  
         } else if (guessCount === 10) {
             hint.textContent = "Game Over :( Try again?";
-            // hint.textContent = "";
-            console.log("TOo many guesses");
             gameOver(); 
 
         // If user guesses wrong but has had less than 10 tries
         } else {
-            // result.textContent - "Wrong!"  
-            hint.classList.remove("wrong", "visible");
-            hint.className += " wrong visible";          
+            hint.classList.add("wrong");      
             if (userGuess > randomNum) {                
                 hint.textContent = "Try a lower number.";
             } else if (userGuess < randomNum) {
@@ -68,7 +62,11 @@ function checkGuess() {
             } 
         }
 
+        // Indicate how many turns are left
+        turns.textContent = 10 - guessCount;
+
         guessCount++;
+        
     }
 
     guessBox.value = "";
@@ -80,10 +78,6 @@ function gameOver() {
     // Show Restart button 
     restartButton.style.visibility = "visible";
     
-    // Hide hints
-    hint.style.visibility = "hidden";
-    // hint.classList.remove("wrong","correct");
-
     // Disable fields
     guessBox.disabled = true;
     submitButton.disabled = true;
@@ -96,8 +90,6 @@ function restartGame() {
     // Hide Restart button 
     restartButton.style.visibility = "hidden";
 
-    
-
     // Re-enable guess fields and submit button
     guessBox.disabled = false;  
     submitButton.disabled = false;
@@ -106,8 +98,14 @@ function restartGame() {
     // Resets result, hint and guess fields
     document.querySelectorAll(".reset").forEach(element => element.textContent = "");
 
+    // Hide hint and guess fields
+    hint.style.display = "none";
+    hint.classList.remove("wrong", "correct");
+    guesses.style.display = "none";
+
     // Reset counter
     guessCount = 1;
+    turns.textContent = 10
 
     // Generate new random number 
     randomNum = Math.floor(Math.random() * 99 + 1);
